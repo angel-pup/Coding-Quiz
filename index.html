@@ -13,41 +13,64 @@
     <body>
     <div class="container">
         <div class="row">
-
         <!---------------------------------------------------------------->
-            <header id="header" class="col-12">
+            <header id="header" class="col-12 mb-5 p-2">
                 <div class="row align-items-center">
                     <h5 class="col text-center">View Leaderboard</h5>
+                    <!--<h5 class="col text-center">Back to Quiz</h5>-->
                     <h2 class="col-6 text-center">JavaScript Quiz!</h2>
-                    <h5 class="col text-center">Timer:</h5>
+                    <div class="col text-center">
+                        <h5 class="col text-center">Time Remaining: </h5>
+                        <div class="timer-count">120</div>
+                    </div>
                 </div>
             </header>
             <!---------------------------------------------------------------->
-            <article class="col-12">
+            <article class="col-12 p-2">
                 <div class="row">
                     <div class="col"></div>
                     <div class="col-auto">
-                        <h1 class="col-12">Question</h1>
-                        <ol>
-                            <li class="col-3"><p>ans1</p></li>
-                            <li class="col-3"><p>ans2</p></li>
-                            <li class="col-3"><p>ans3</p></li>
-                            <li class="col-3"><p>ans4</p></li>
-                        </ol>
+                        <!-- start button implementation -->
+                        <!--<button id="start-button" class="btn btn-primary">Start Quiz!</button>-->
+
+                        <!-- question bank implementation -->
+                        <!--<div id="leaderboard">
+                            <h3 class="col-12 p-3">Some random question about JavaScript?</h3>
+                            <ol>
+                                <li class="col-3 m-2"><p>ans1</p></li>
+                                <li class="col-3 m-2"><p>ans2</p></li>
+                                <li class="col-3 m-2"><p>ans3</p></li>
+                                <li class="col-3 m-2"><p>ans4</p></li>
+                            </ol>
+                        </div>-->
+
+                        <!-- leaderboard implementation -->
+                        <!--<ol class="col-12 d-inline-block">
+                            <li class=""><p>testName <span>testScore</span></p></li>
+                            <li class=""><p>testName <span>testScore</span></p></li>
+                            <li class=""><p>testName <span>testScore</span></p></li>
+                            <li class=""><p>testName <span>testScore</span></p></li>
+                            <li class=""><p>testName <span>testScore</span></p></li>
+                            <li class=""><p>testName <span>testScore</span></p></li>
+                            <li class=""><p>testName <span>testScore</span></p></li>
+                            <li class=""><p>testName <span>testScore</span></p></li>
+                            <li class=""><p>testName <span>testScore</span></p></li>
+                            <li class=""><p>testName <span>testScore</span></p></li>
+                        </ol>-->
                     </div>
                     <div class="col"></div>
                 </div>
             </article>
             <!---------------------------------------------------------------->
-            <footer id="footer" class="row">
+            <footer id="footer" class="row mt-5 p-2">
                 <div class="col"></div>
-                <article class="col-auto"><h2>Developed with <3 by Spencer S.</h2></article>
+                <article class="col-auto"><h5>Developed by Spencer S.</h5></article>
                 <div class="col"></div>
             </footer>
 
-        </div>
-    </div>
+        </div> <!--row-->
+    </div> <!--container-->
         <!---------------------------------------------------------------->
-        <script src="assets/js/script.js"></script>
+        <script src="./assets/js/script.js"></script>
     </body>
 </html>
