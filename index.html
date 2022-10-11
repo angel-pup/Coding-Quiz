@@ -31,38 +31,95 @@
                     <div class="col"></div>
                     <div class="col-auto">
                         <!-- start button implementation -->
-                        <!--<button id="start-button" class="btn btn-primary">Start Quiz!</button>-->
+                        <div class="d-flex row justify-content-center d-none">
+                            <button id="start-button" class="btn btn-primary w-auto">Start Quiz!</button>
+                        </div>
 
                         <!-- question bank implementation -->
-                        <!--<div id="leaderboard">
-                            <h3 class="col-12 p-3">Some random question about JavaScript?</h3>
-                            <ol>
-                                <li class="col-3 m-2"><p>ans1</p></li>
-                                <li class="col-3 m-2"><p>ans2</p></li>
-                                <li class="col-3 m-2"><p>ans3</p></li>
-                                <li class="col-3 m-2"><p>ans4</p></li>
-                            </ol>
-                        </div>-->
+                        <div id="question" class="row text-center d-none">
+                            <h3 class="col-12 p-3 text-center">Some random question about JavaScript?</h3>
+                            <ul class="list-unstyled">
+                                <li class="m-2"><button class="col-12 btn btn-secondary">ans1</button></li>
+                                <li class="m-2"><button class="col-12 btn btn-secondary">ans2</button></li>
+                                <li class="m-2"><button class="col-12 btn btn-secondary">ans3</button></li>
+                                <li class="m-2"><button class="col-12 btn btn-secondary">ans4</button></li>
+                            </ul>
+                        </div>
 
                         <!-- leaderboard implementation -->
-                        <!--<ol class="col-12 d-inline-block">
-                            <li class=""><p>testName <span>testScore</span></p></li>
-                            <li class=""><p>testName <span>testScore</span></p></li>
-                            <li class=""><p>testName <span>testScore</span></p></li>
-                            <li class=""><p>testName <span>testScore</span></p></li>
-                            <li class=""><p>testName <span>testScore</span></p></li>
-                            <li class=""><p>testName <span>testScore</span></p></li>
-                            <li class=""><p>testName <span>testScore</span></p></li>
-                            <li class=""><p>testName <span>testScore</span></p></li>
-                            <li class=""><p>testName <span>testScore</span></p></li>
-                            <li class=""><p>testName <span>testScore</span></p></li>
-                        </ol>-->
+                        <div class="row">
+                            <div class="invisible">---------------------------------------------------------------
+                                --------------------------------</div>
+                        </div>
+
+                        <table class="table table-hover">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Initials</th>
+                                    <th scope="col">Score</th>
+                                </tr>
+                            </thead>
+                            <tbody class="table-secondary">
+                                <tr>
+                                    <th id="please-1" scope="row">1</th>
+                                    <td>RSS</td>
+                                    <td>score</td>
+                                </tr>
+                                <tr>
+                                    <th id="please-2" scope="row">2</th>
+                                    <td>RSS</td>
+                                    <td>score</td>
+                                </tr>
+                                <tr>
+                                    <th id="place-3" scope="row">3</th>
+                                    <td>RSS</td>
+                                    <td>score</td>
+                                </tr>
+                                <tr>
+                                    <th id="place-4" scope="row">4</th>
+                                    <td>RSS</td>
+                                    <td>score</td>
+                                </tr>
+                                <tr>
+                                    <th id="place-5" scope="row">5</th>
+                                    <td>RSS</td>
+                                    <td>score</td>
+                                </tr>
+                                <tr>
+                                    <th id="place-6" scope="row">6</th>
+                                    <td>RSS</td>
+                                    <td>score</td>
+                                </tr>
+                                <tr>
+                                    <th id="place-7" scope="row">7</th>
+                                    <td>RSS</td>
+                                    <td>score</td>
+                                </tr>
+                                <tr>
+                                    <th id="place-8" scope="row">8</th>
+                                    <td>RSS</td>
+                                    <td>score</td>
+                                </tr>
+                                <tr>
+                                    <th id="place-9" scope="row">9</th>
+                                    <td>RSS</td>
+                                    <td>score</td>
+                                </tr>
+                                <tr>
+                                    <th id="place-10" scope="row">10</th>
+                                    <td>RSS</td>
+                                    <td>score</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
                     </div>
                     <div class="col"></div>
                 </div>
             </article>
             <!---------------------------------------------------------------->
-            <footer id="footer" class="row mt-5 p-2">
+            <footer id="footer" class="row mt-5 p-2 text-center">
                 <div class="col"></div>
                 <article class="col-auto"><h5>Developed by Spencer S.</h5></article>
                 <div class="col"></div>
