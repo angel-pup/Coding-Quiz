@@ -4,14 +4,17 @@ let timerCountEl = document.querySelector('.timer-count');
 let startButton = document.querySelector('#start-button');
 let $homeEl = $('#home');
 let $leaderboardEl = $('#leaderboard');
+let $leaderboardBodyEl = $('#leaderboard-body');
 let $questionEl = $('#question');
 let $buttonEl = $('.list-unstyled');
 let $viewLeaderboardEl = $('#view-leaderboard');
+let $highscoreForm = $('#highscore-form');
 let questionNo = 0;
 let randomized = []
 let score = 0;
 let secondsLeft;
 let currentQuestion = [];
+let highscores = [];
 
 let win = false;
 let questionBank = [
@@ -81,20 +84,13 @@ function nextQuestion() {
 
     $questionEl.children('h3').text(currentQuestion.question);
 
-    choices.forEach((x, i) => {
+    choices.forEach((x) => {
         let y = "<li class=\"m-2\"><button class=\"col-12 btn btn-secondary\">" + x + "</button></li>";
         $el = $(y);
         $buttonEl.append($el);
     });
 
     questionNo++;
-}
-
-function displayQuestions() {
-    $leaderboardEl.addClass('d-none');
-    $homeEl.addClass('d-none');
-    $questionEl.removeClass('d-none');
-    //add highscore component
 }
 
 function toggleLeaderboard() {
@@ -107,32 +103,43 @@ function toggleLeaderboard() {
     }
 }
 
+function displayQuestions() {
+    $leaderboardEl.addClass('d-none');
+    $homeEl.addClass('d-none');
+    $questionEl.removeClass('d-none');
+    $highscoreForm.addClass('d-none');
+}
+
 function showLeaderboard() {
     $leaderboardEl.removeClass('d-none');
     $homeEl.addClass('d-none');
     $questionEl.addClass('d-none');
     $viewLeaderboardEl.text('Back to Quiz');
-    //add highscore component
+    $highscoreForm.addClass('d-none');
 }
 
 function showHome() {
     $leaderboardEl.addClass('d-none');
     $homeEl.removeClass('d-none');
     $questionEl.addClass('d-none');
-    //add highscore component
-    $viewLeaderboardEl.text('View Leaderboard');
+    $highscoreForm.addClass('d-none');
+    //$viewLeaderboardEl.text('View Leaderboard');
 }
 
 function showHighscoreInput() {
     $leaderboardEl.addClass('d-none');
     $homeEl.addClass('d-none');
     $questionEl.addClass('d-none');
-    //add highscore component
+    $highscoreForm.removeClass('d-none');
+}
+
+function storeHighscores() {
+    localStorage.setItem("highscores", JSON.stringify(highscores));
 }
 
 function timeOut() {
     alert('Times Up!');
-    resetGame();
+    showHighscoreInput();
 }
 
 function resetGame() {
@@ -140,21 +147,53 @@ function resetGame() {
     questionNo = 0;
     score = 0;
     win = false;
-    showHome();
+    showHighscoreInput();
+}
+
+function setupLeaderboard() {
+    $leaderboardBodyEl.children().remove();
+
+    highscores.forEach((x, i) => {
+        let y = "<tr><th scope=\"row\">" + (i+1) + "</th><td>" + x[0] + "</td><td>" + x[1] + "</td></tr>";
+        $el = $(y);
+        $leaderboardBodyEl.append($el);
+    });
+}
+
+function init() {
+    let storedHighscores = JSON.parse(localStorage.getItem("highscores"));
+
+    if (storedHighscores !== null) {
+        highscores = storedHighscores;
+    }
+
+    setupLeaderboard();
 }
 
 function winner() {
     console.log('Winner');
     console.log('Score: ' + score);
     win = true;
-    showHome();
+    showHighscoreInput();
 }
 
 function submitHighscore(event) {
     event.preventDefault();
+    let name = $('input[name="initials-text"]').val();
 
-    let name = highscoreForm.value.trim();
+    if (!name) {
+        return;
+    }
 
+    highscores.push([name, score]);
+    highscores.sort(function(a, b) { return b[1] - a[1] }).splice(10);
+
+    storeHighscores();
+    setupLeaderboard();
+    resetGame();
+    showHome();
+
+    $('input[name="initials-text"]').text('');
 }
 
 function checkAnswer(event) {
@@ -191,7 +230,6 @@ function startGame() {
         if (secondsLeft >= 0) {
             if (win && secondsLeft > 0) {
                 clearInterval(timerInterval);
-                resetGame();
             }
         }
 
@@ -214,6 +252,7 @@ $viewLeaderboardEl.on('click', toggleLeaderboard);
 
 window.addEventListener('load', function() {
     randomized = shuffleArray(questionBank);
+    init();
 });
 
-$highscoreForm.addEventListener('submit', submitHighscore);
+$highscoreForm.on('submit', submitHighscore);

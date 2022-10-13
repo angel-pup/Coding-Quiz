@@ -48,18 +48,15 @@
                             </div>
 
                             <!-- highscore implementation... IF I HAD ONE -->
-                            <div id="highscore" class="row text-center ">
-                                <h5 class="col-12 p3 text-center ">New Highscore!</h5>
-                                <h3 class="col-12 p3 text-center">Score: <span></span></h3>
-                                <div class="row text-center">
-                                    <div class="col-3"></div>
-                                    <h5 class="col-3">Initials: </h5>
-                                    <form id="todo-form" class="col-3" method="POST">
-                                        <label for="initials-text">Add a Todo: </label>
+                            <div id="highscore" class="row text-center d-none">
+                                <h5 class="col-12 p-3 text-center d-none">New Highscore!</h5>
+                                <h3 class="col-12 p-3 text-center">Score: <span></span></h3>
+                                    <div class="col-4"></div>
+                                    <form id="highscore-form" class="col-4" method="POST">
+                                        <label class="" for="initials-text">Initials:</label>
                                         <input type="text" placeholder="AAA" name="initials-text" id="initials-text" maxlength="3" />
                                     </form>
-                                    <div class="col-3"></div>
-                                </div>
+                                    <div class="col-4"></div>
                             </div>
 
                             <!-- leaderboard implementation -->
@@ -71,57 +68,7 @@
                                         <th scope="col">Score</th>
                                     </tr>
                                 </thead>
-                                <tbody class="table-secondary">
-                                    <tr>
-                                        <th id="place-1" scope="row">1</th>
-                                        <td>RSS</td>
-                                        <td>score</td>
-                                    </tr>
-                                    <tr>
-                                        <th id="place-2" scope="row">2</th>
-                                        <td>RSS</td>
-                                        <td>score</td>
-                                    </tr>
-                                    <tr>
-                                        <th id="place-3" scope="row">3</th>
-                                        <td>RSS</td>
-                                        <td>score</td>
-                                    </tr>
-                                    <tr>
-                                        <th id="place-4" scope="row">4</th>
-                                        <td>RSS</td>
-                                        <td>score</td>
-                                    </tr>
-                                    <tr>
-                                        <th id="place-5" scope="row">5</th>
-                                        <td>RSS</td>
-                                        <td>score</td>
-                                    </tr>
-                                    <tr>
-                                        <th id="place-6" scope="row">6</th>
-                                        <td>RSS</td>
-                                        <td>score</td>
-                                    </tr>
-                                    <tr>
-                                        <th id="place-7" scope="row">7</th>
-                                        <td>RSS</td>
-                                        <td>score</td>
-                                    </tr>
-                                    <tr>
-                                        <th id="place-8" scope="row">8</th>
-                                        <td>RSS</td>
-                                        <td>score</td>
-                                    </tr>
-                                    <tr>
-                                        <th id="place-9" scope="row">9</th>
-                                        <td>RSS</td>
-                                        <td>score</td>
-                                    </tr>
-                                    <tr>
-                                        <th id="place-10" scope="row">10</th>
-                                        <td>RSS</td>
-                                        <td>score</td>
-                                    </tr>
+                                <tbody id="leaderboard-body" class="table-secondary">
                                 </tbody>
                             </table>
 
