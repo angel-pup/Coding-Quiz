@@ -16,8 +16,8 @@ let score = 0;
 let secondsLeft;
 let currentQuestion = [];
 let highscores = [];
-
 let win = false;
+
 let questionBank = [
     //Q1
     {
@@ -30,33 +30,45 @@ let questionBank = [
     },
     //Q2
     {
-        question: 'This is a test question 2?',
-        answer: 'This is a test answer',
-        possibleAnswers: ['This is a test decoy', 'This is a test decoy', 'This is a test decoy', 'This is a test answer']
+        question: 'Which while loop is NOT set up correctly?',
+        answer: 'let i = 0; while(i) { console.log(i); i--; }',
+        possibleAnswers: ['let i = 0; while(i) { console.log(i); i--; }',
+            'let i = 9; while(1) { console.log("hello!" + i); if(i <=0) { break; } i--; }',
+            'let i = 10; while(i--) { console.log(i); }',
+            'let someVal = 0; while(boolVal) { if(someVal >= 5) { boolVal = true; } someVal++; }']
     },
     //Q3
     {
-        question: 'This is a test question 3?',
-        answer: 'This is a test answer',
-        possibleAnswers: ['This is a test decoy', 'This is a test decoy', 'This is a test decoy', 'This is a test answer']
+        question: 'Which of these correctly adds data to local storage?',
+        answer: 'localStorage.setItem("highscores", JSON.stringify(highscores));',
+        possibleAnswers: ['localStorage.setItem("highscores", JSON.stringify(highscores));',
+            'localStorage.addItem("highscores", JSON.stringify(highscores));',
+            'localStorage.createItem("highscores", JSON.stringify(highscores));',
+            'localStorage.item("highscores", JSON.stringify(highscores));']
     },
     //Q4
     {
-        question: 'This is a test question 4?',
-        answer: 'This is a test answer',
-        possibleAnswers: ['This is a test decoy', 'This is a test decoy', 'This is a test decoy', 'This is a test answer']
+        question: 'What can be used to escape a symbol inside a string?',
+        answer: '\\',
+        possibleAnswers: ['\\', '.\\', '/', './']
     },
     //Q5
     {
-        question: 'This is a test question 5?',
-        answer: 'This is a test answer',
-        possibleAnswers: ['This is a test decoy', 'This is a test decoy', 'This is a test decoy', 'This is a test answer']
+        question: 'What is the purpose of the break keyword in a switch statement?',
+        answer: 'Without it, code not matching the criteria may incidentally execute',
+        possibleAnswers: ['Without it, code not matching the criteria may incidentally execute',
+            'It has no real purpose',
+            'It is needed to break out of the switch once a given condition is met,',
+            'It is used to check if a given code block must be executed']
     },
     //Q6
     {
-        question: 'This is a test question 6?',
-        answer: 'This is a test answer',
-        possibleAnswers: ['This is a test decoy', 'This is a test decoy', 'This is a test decoy', 'This is a test answer']
+        question: 'What is the === operator checking for??',
+        answer: 'strict equality',
+        possibleAnswers: ['strict equality',
+            'true equality',
+            'type equality',
+            'harsh equality']
     }
 ];
 
