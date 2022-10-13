@@ -1,4 +1,4 @@
-//TODO: Add Highscore component, implement highscores in leaderboard and show current score, add proper q&a, pretty it up, move resets to highscore component, local storage.
+//TODO: show current score, add proper q&a, pretty it up
 
 let timerCountEl = document.querySelector('.timer-count');
 let startButton = document.querySelector('#start-button');
@@ -123,7 +123,7 @@ function showHome() {
     $homeEl.removeClass('d-none');
     $questionEl.addClass('d-none');
     $highscoreForm.addClass('d-none');
-    //$viewLeaderboardEl.text('View Leaderboard');
+    $viewLeaderboardEl.text('View Leaderboard');
 }
 
 function showHighscoreInput() {
@@ -135,11 +135,6 @@ function showHighscoreInput() {
 
 function storeHighscores() {
     localStorage.setItem("highscores", JSON.stringify(highscores));
-}
-
-function timeOut() {
-    alert('Times Up!');
-    showHighscoreInput();
 }
 
 function resetGame() {
@@ -170,13 +165,6 @@ function init() {
     setupLeaderboard();
 }
 
-function winner() {
-    console.log('Winner');
-    console.log('Score: ' + score);
-    win = true;
-    showHighscoreInput();
-}
-
 function submitHighscore(event) {
     event.preventDefault();
     let name = $('input[name="initials-text"]').val();
@@ -204,7 +192,8 @@ function checkAnswer(event) {
         } else {
             score += (80 - (80 - secondsLeft)); //add less points for when more time is used to finish quiz
         }
-        winner();
+        win = true;
+        showHighscoreInput();
     }
     else if(event.target.innerHTML === randomized[questionNo].answer) {
         score += 4;
@@ -235,7 +224,8 @@ function startGame() {
 
         if (secondsLeft <= 0) {
             clearInterval(timerInterval);
-            timeOut();
+            alert('Times Up!');
+            showHighscoreInput();
         }
     }, 1000);
 }
