@@ -81,9 +81,9 @@ let questionBank = [
  * Using Durstenfeld shuffle algorithm.
  */
 function shuffleArray(array) {
-    for (var i = array.length - 1; i > 0; i--) {
-        var j = Math.floor(Math.random() * (i + 1));
-        var temp = array[i];
+    for (let i = array.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1));
+        let temp = array[i];
         array[i] = array[j];
         array[j] = temp;
     }
@@ -102,7 +102,7 @@ function nextQuestion() {
 
     choices.forEach((x) => {
         let y = "<li class=\"m-2\"><button class=\"col-12 btn btn-secondary\">" + x + "</button></li>";
-        $el = $(y);
+        let $el = $(y);
         $buttonEl.append($el);
     });
 
@@ -167,7 +167,7 @@ function setupLeaderboard() {
 
     highscores.forEach((x, i) => {
         let y = "<tr><th scope=\"row\">" + (i+1) + "</th><td>" + x[0] + "</td><td>" + x[1] + "</td></tr>";
-        $el = $(y);
+        let $el = $(y);
         $leaderboardBodyEl.append($el);
     });
 }
@@ -184,7 +184,8 @@ function init() {
 
 function submitHighscore(event) {
     event.preventDefault();
-    let name = $('input[name="initials-text"]').val();
+    let $nameEl = $('input[name="initials-text"]')
+    let name = $nameEl.val();
 
     if (!name) {
         return;
@@ -198,7 +199,7 @@ function submitHighscore(event) {
     resetGame();
     showHome();
 
-    $('input[name="initials-text"]').text('');
+    $nameEl.text('');
 }
 
 function checkAnswer(event) {
