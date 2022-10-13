@@ -6,6 +6,10 @@ let $questionEl = $('#question');
 let $buttonEl = $('.list-unstyled');
 let $viewLeaderboardEl = $('#view-leaderboard');
 let questionNo = 0;
+let randomized = []
+let score;
+let secondsLeft = timerCountEl.textContent;
+let nextQuestion = [];
 
 let win = false;
 let questionBank = [
@@ -62,27 +66,42 @@ function shuffleArray(array) {
         array[i] = array[j];
         array[j] = temp;
     }
+
+    console.log(array);
+    return array;
 }
 
-function showQuestion(obj) {
-    let choices = shuffleArray(obj.possibleAnswers);
+function nextQuestion() {
+    console.log(questionNo);
+    nextQuestion = randomized[questionNo];
 
-    for (var i = 0; i < choices.length; i++) {
-        $buttonEl.children(i).text(choices[i]);
-    }
+    let choices = shuffleArray(nextQuestion.possibleAnswers);
 
+    $buttonEl.children().remove()
+
+    choices.forEach((x, i) => {
+        let y = "<li class=\"m-2\"><button class=\"col-12 btn btn-secondary\">" + x + "</button></li>";
+        $el = $(y);
+        $buttonEl.append($el);
+    });
+
+    questionNo++;
+}
+
+function displayQuestions() {
     $leaderboardEl.addClass('d-none');
     $homeEl.addClass('d-none');
     $questionEl.removeClass('d-none');
     //add highscore component
-    questionNo++;
 }
 
 function toggleLeaderboard() {
-    if ($leaderboardEl.hasClass('d-none')) {
-        showLeaderboard();
-    } else {
-        showHome();
+    if ( $questionEl.hasClass('d-none')){
+        if ($leaderboardEl.hasClass('d-none')) {
+            showLeaderboard();
+        } else {
+            showHome();
+        }
     }
 }
 
@@ -118,12 +137,22 @@ function winner() {
 
 }
 
+function checkAnswer(event) {
+    if(event.target.innerHTML === randomized[questionNo].answer) {
+        nextQuestion();
+        score++;
+        console.log(score);
+    } else {
+        secondsLeft -= 3;
+    }
+}
+
 function startGame() {
-    let randomized = shuffleArray(questionBank);
+    score = 0;
 
-    showQuestion(randomized[questionNo]);
-
-    let secondsLeft = timerCountEl.textContent;
+    console.log(randomized);
+    nextQuestion();
+    displayQuestions();
 
     let timerInterval = setInterval(function () {
         secondsLeft--;
@@ -146,10 +175,14 @@ function startGame() {
 
 startButton.addEventListener('click', startGame);
 
-$buttonEl.on('click', '.btn', showQuestion);
+$buttonEl.on('click', '.btn', checkAnswer);
 
 $viewLeaderboardEl.hover(function() {
     $(this).css('cursor','pointer');
 });
 
 $viewLeaderboardEl.on('click', toggleLeaderboard);
+
+window.addEventListener('load', function() {
+    randomized = shuffleArray(questionBank);
+});
