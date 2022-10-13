@@ -1,3 +1,5 @@
+//TODO: Add Highscore component, implement highscores in leaderboard, add proper q&a, pretty it up.
+
 let timerCountEl = document.querySelector('.timer-count');
 let startButton = document.querySelector('#start-button');
 let $homeEl = $('#home');
@@ -8,7 +10,7 @@ let $viewLeaderboardEl = $('#view-leaderboard');
 let questionNo = 0;
 let randomized = []
 let score = 0;
-let secondsLeft = timerCountEl.textContent;
+let secondsLeft;
 let currentQuestion = [];
 
 let win = false;
@@ -150,11 +152,16 @@ function winner() {
 
 function checkAnswer(event) {
     if ((questionNo) >= randomized.length) {
-        score++;
+        console.log('secs' + secondsLeft);
+        if (secondsLeft > 80) {
+            score += 80;
+        } else {
+            score += (80 - (80 - secondsLeft));
+        }
         winner();
     }
     else if(event.target.innerHTML === randomized[questionNo].answer) {
-        score++;
+        score += 4;
         nextQuestion();
 
     }
@@ -164,6 +171,8 @@ function checkAnswer(event) {
 }
 
 function startGame() {
+    secondsLeft = timerCountEl.textContent;
+
     displayQuestions();
     nextQuestion();
 
