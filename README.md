@@ -52,7 +52,7 @@ Please refer to the LICENSE file for more information.
 
 ## Code-Example
 #### Some Code Snippets:
-![image](./assets/images/example-code.png)
+![image](./assets/images/code-ex.png)
 
 ## Live-Site
 #### Click [here](https://spencerrsms.github.io/Coding-Quize/) for the [live site](https://spencerrsms.github.io/Coding-Quiz/)!
