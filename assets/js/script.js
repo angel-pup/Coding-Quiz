@@ -21,9 +21,12 @@ let win = false;
 let questionBank = [
     //Q1
     {
-        question: 'This is a test question?',
-        answer: 'This is a test answer',
-        possibleAnswers: ['This is a test decoy', 'This is a test decoy', 'This is a test decoy', 'This is a test answer']
+        question: 'What does isNaN() do?',
+        answer: 'Returns true if argument is not a number, false otherwise',
+        possibleAnswers: ['Returns true if argument is null, false otherwise',
+            'Returns false if argument is null, true otherwise',
+            'Returns false if argument is not a number, true otherwise',
+            'Returns true if argument is not a number, false otherwise']
     },
     //Q2
     {
@@ -197,7 +200,7 @@ function checkAnswer(event) {
         win = true;
         showHighscoreInput();
     }
-    else if(event.target.innerHTML === randomized[questionNo].answer) {
+    else if(event.target.innerHTML === currentQuestion.answer) {
         score += 4;
         nextQuestion();
 
