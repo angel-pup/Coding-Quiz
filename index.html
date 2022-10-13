@@ -15,11 +15,10 @@
 
         <div class="container">
             <div class="row">
-            <!---------------------------------------------------------------->
+                <!---------------------------------------------------------------->
                 <header id="header" class="col-12 mt-5 mb-5 p-2">
                     <div class="row align-items-center">
                         <h5 id="view-leaderboard" class="col text-center">View Leaderboard</h5>
-                        <!--<h5 class="col text-center">Back to Quiz</h5>-->
                         <h2 class="col-6 text-center">JavaScript Quiz!</h2>
                         <div class="col text-center">
                             <h5 class="col text-center">Time Remaining: </h5>
@@ -49,6 +48,19 @@
                             </div>
 
                             <!-- highscore implementation... IF I HAD ONE -->
+                            <div id="highscore" class="row text-center ">
+                                <h5 class="col-12 p3 text-center ">New Highscore!</h5>
+                                <h3 class="col-12 p3 text-center">Score: <span></span></h3>
+                                <div class="row text-center">
+                                    <div class="col-3"></div>
+                                    <h5 class="col-3">Initials: </h5>
+                                    <form id="todo-form" class="col-3" method="POST">
+                                        <label for="initials-text">Add a Todo: </label>
+                                        <input type="text" placeholder="AAA" name="initials-text" id="initials-text" maxlength="3" />
+                                    </form>
+                                    <div class="col-3"></div>
+                                </div>
+                            </div>
 
                             <!-- leaderboard implementation -->
                             <table id="leaderboard" class="table table-hover d-none">

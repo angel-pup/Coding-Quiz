@@ -98,7 +98,7 @@ function displayQuestions() {
 }
 
 function toggleLeaderboard() {
-    if ( $questionEl.hasClass('d-none')){
+    if ( $questionEl.hasClass('d-none')){ // prevent toggling leaderboard during quiz
         if ($leaderboardEl.hasClass('d-none')) {
             showLeaderboard();
         } else {
@@ -148,6 +148,13 @@ function winner() {
     console.log('Score: ' + score);
     win = true;
     showHome();
+}
+
+function submitHighscore(event) {
+    event.preventDefault();
+
+    let name = highscoreForm.value.trim();
+
 }
 
 function checkAnswer(event) {
@@ -208,3 +215,5 @@ $viewLeaderboardEl.on('click', toggleLeaderboard);
 window.addEventListener('load', function() {
     randomized = shuffleArray(questionBank);
 });
+
+$highscoreForm.addEventListener('submit', submitHighscore);
