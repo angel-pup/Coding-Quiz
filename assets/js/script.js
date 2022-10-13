@@ -8,7 +8,8 @@ let $leaderboardBodyEl = $('#leaderboard-body');
 let $questionEl = $('#question');
 let $buttonEl = $('.list-unstyled');
 let $viewLeaderboardEl = $('#view-leaderboard');
-let $highscoreForm = $('#highscore-form');
+let $highscoreFormEl = $('#highscore-form');
+let $highscoreEl = $('#highscore');
 let questionNo = 0;
 let randomized = []
 let score = 0;
@@ -107,22 +108,22 @@ function displayQuestions() {
     $leaderboardEl.addClass('d-none');
     $homeEl.addClass('d-none');
     $questionEl.removeClass('d-none');
-    $highscoreForm.addClass('d-none');
+    $highscoreEl.addClass('d-none');
 }
 
 function showLeaderboard() {
     $leaderboardEl.removeClass('d-none');
     $homeEl.addClass('d-none');
     $questionEl.addClass('d-none');
+    $highscoreEl.addClass('d-none');
     $viewLeaderboardEl.text('Back to Quiz');
-    $highscoreForm.addClass('d-none');
 }
 
 function showHome() {
     $leaderboardEl.addClass('d-none');
     $homeEl.removeClass('d-none');
     $questionEl.addClass('d-none');
-    $highscoreForm.addClass('d-none');
+    $highscoreEl.addClass('d-none');
     $viewLeaderboardEl.text('View Leaderboard');
 }
 
@@ -130,7 +131,8 @@ function showHighscoreInput() {
     $leaderboardEl.addClass('d-none');
     $homeEl.addClass('d-none');
     $questionEl.addClass('d-none');
-    $highscoreForm.removeClass('d-none');
+    $highscoreEl.removeClass('d-none');
+    $highscoreEl.children('h3').text(score);
 }
 
 function storeHighscores() {
@@ -245,4 +247,4 @@ window.addEventListener('load', function() {
     init();
 });
 
-$highscoreForm.on('submit', submitHighscore);
+$highscoreFormEl.on('submit', submitHighscore);
