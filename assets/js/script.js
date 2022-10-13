@@ -1,4 +1,4 @@
-//TODO: Add Highscore component, implement highscores in leaderboard, add proper q&a, pretty it up.
+//TODO: Add Highscore component, implement highscores in leaderboard and show current score, add proper q&a, pretty it up, move resets to highscore component, local storage.
 
 let timerCountEl = document.querySelector('.timer-count');
 let startButton = document.querySelector('#start-button');
@@ -156,7 +156,7 @@ function checkAnswer(event) {
         if (secondsLeft > 80) {
             score += 80;
         } else {
-            score += (80 - (80 - secondsLeft));
+            score += (80 - (80 - secondsLeft)); //add less points for when more time is used to finish quiz
         }
         winner();
     }
