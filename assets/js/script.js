@@ -1,4 +1,4 @@
-//TODO: show current score, add proper q&a, pretty it up
+//TODO: add proper q&a, pretty it up
 
 let timerCountEl = document.querySelector('.timer-count');
 let startButton = document.querySelector('#start-button');
