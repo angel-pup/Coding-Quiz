@@ -7,9 +7,9 @@ let $buttonEl = $('.list-unstyled');
 let $viewLeaderboardEl = $('#view-leaderboard');
 let questionNo = 0;
 let randomized = []
-let score;
+let score = 0;
 let secondsLeft = timerCountEl.textContent;
-let nextQuestion = [];
+let currentQuestion = [];
 
 let win = false;
 let questionBank = [
@@ -66,18 +66,18 @@ function shuffleArray(array) {
         array[i] = array[j];
         array[j] = temp;
     }
-
-    console.log(array);
     return array;
 }
 
 function nextQuestion() {
-    console.log(questionNo);
-    nextQuestion = randomized[questionNo];
 
-    let choices = shuffleArray(nextQuestion.possibleAnswers);
+    currentQuestion = randomized[questionNo];
+
+    let choices = shuffleArray(currentQuestion.possibleAnswers);
 
     $buttonEl.children().remove()
+
+    $questionEl.children('h3').text(currentQuestion.question);
 
     choices.forEach((x, i) => {
         let y = "<li class=\"m-2\"><button class=\"col-12 btn btn-secondary\">" + x + "</button></li>";
@@ -128,31 +128,45 @@ function showHighscoreInput() {
     //add highscore component
 }
 
+function timeOut() {
+    alert('Times Up!');
+    resetGame();
+}
+
 function resetGame() {
     timerCountEl.innerHTML = '120';
-    alert('Times Up!');
+    questionNo = 0;
+    score = 0;
+    win = false;
+    showHome();
 }
 
 function winner() {
-
+    console.log('Winner');
+    console.log('Score: ' + score);
+    win = true;
+    showHome();
 }
 
 function checkAnswer(event) {
-    if(event.target.innerHTML === randomized[questionNo].answer) {
-        nextQuestion();
+    if ((questionNo) >= randomized.length) {
         score++;
-        console.log(score);
-    } else {
+        winner();
+    }
+    else if(event.target.innerHTML === randomized[questionNo].answer) {
+        score++;
+        nextQuestion();
+
+    }
+    else {
         secondsLeft -= 3;
     }
 }
 
 function startGame() {
-    score = 0;
-
-    console.log(randomized);
-    nextQuestion();
     displayQuestions();
+    nextQuestion();
+
 
     let timerInterval = setInterval(function () {
         secondsLeft--;
@@ -161,14 +175,13 @@ function startGame() {
         if (secondsLeft >= 0) {
             if (win && secondsLeft > 0) {
                 clearInterval(timerInterval);
-                winner();
                 resetGame();
             }
         }
 
         if (secondsLeft <= 0) {
             clearInterval(timerInterval);
-            resetGame();
+            timeOut();
         }
     }, 1000);
 }
