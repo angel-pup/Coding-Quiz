@@ -10,7 +10,9 @@
         <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
     </head>
     <body>
-        <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous" defer></script>
+        <script src="https://code.jquery.com/jquery-3.6.1.js"
+                integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+                crossorigin="anonymous" defer></script>
         <script src="./assets/js/script.js" defer></script>
 
         <div class="container">
@@ -40,23 +42,30 @@
                             <div id="question" class="row text-center d-none">
                                 <h3 class="col-12 p-3 text-center">Some random question about JavaScript?</h3>
                                 <ul class="list-unstyled">
-                                    <li class="m-2"><button id="ans-1" class="col-12 btn btn-secondary">ans1</button></li>
-                                    <li class="m-2"><button id="ans-2" class="col-12 btn btn-secondary">ans2</button></li>
-                                    <li class="m-2"><button id="ans-3" class="col-12 btn btn-secondary">ans3</button></li>
-                                    <li class="m-2"><button id="ans-4" class="col-12 btn btn-secondary">ans4</button></li>
+                                    <li class="m-2"><button id="ans-1"
+                                                            class="col-12 btn btn-secondary">ans1</button></li>
+                                    <li class="m-2"><button id="ans-2"
+                                                            class="col-12 btn btn-secondary">ans2</button></li>
+                                    <li class="m-2"><button id="ans-3"
+                                                            class="col-12 btn btn-secondary">ans3</button></li>
+                                    <li class="m-2"><button id="ans-4"
+                                                            class="col-12 btn btn-secondary">ans4</button></li>
                                 </ul>
                             </div>
 
                             <!-- highscore implementation... IF I HAD ONE -->
                             <div id="highscore" class="row text-center d-none">
-                                <h5 class="col-12 p-3 text-center d-none">New Highscore!</h5>
+                                <h5 id="new-highscore" class="col-12 p-3 text-center d-none">New Highscore!</h5>
                                 <h3 class="col-12 p-3 text-center">Score: <span></span></h3>
                                     <div class="col-4"></div>
-                                    <form id="highscore-form" class="col-4" method="POST">
-                                        <label class="" for="initials-text">Initials:</label>
-                                        <input type="text" placeholder="AAA" name="initials-text" id="initials-text" maxlength="3" />
+                                    <form id="highscore-form" class="col-3" method="POST">
+                                        <label class="mb-3" for="initials-text">Initials:</label>
+                                        <input type="text" placeholder="AAA" name="initials-text"
+                                               id="initials-text" maxlength="3" class="mb-3 "/>
+                                        <button class="btn btn-primary">Submit Highscore</button>
+                                        <button id="go-home-button" class="btn btn-secondary">Home</button>
                                     </form>
-                                    <div class="col-4"></div>
+                                    <div class="col-3"></div>
                             </div>
 
                             <!-- leaderboard implementation -->
