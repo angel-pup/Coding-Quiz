@@ -207,6 +207,11 @@ function submitHighscore(event) {
     let $nameEl = $('input[name="initials-text"]')
     let name = $nameEl.val();
 
+    if(/^[A-Za-z]*$/.test(name)) {
+        alert("Please use only letters for initials");
+        return;
+    }
+
     if (!name) {
         return;
     }
