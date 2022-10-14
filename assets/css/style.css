@@ -8,3 +8,15 @@ label {
     font-size: 1.4em;
     padding-right: .5em;
 }
+
+#highscore {
+    margin-left: 1em;
+}
+
+#highscore h3 {
+    margin-left: -1em;
+}
+
+#new-highscore {
+    margin-left: -1.4em;
+}

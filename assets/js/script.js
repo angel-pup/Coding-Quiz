@@ -2,6 +2,7 @@
 
 let timerCountEl = document.querySelector('.timer-count');
 let startButton = document.querySelector('#start-button');
+
 let $homeEl = $('#home');
 let $leaderboardEl = $('#leaderboard');
 let $leaderboardBodyEl = $('#leaderboard-body');
@@ -10,6 +11,10 @@ let $buttonEl = $('.list-unstyled');
 let $viewLeaderboardEl = $('#view-leaderboard');
 let $highscoreFormEl = $('#highscore-form');
 let $highscoreEl = $('#highscore');
+let $homeButtonEl = $('#go-home-button');
+let $newHighscoreEl = $('#new-highscore');
+let $wrongAnswerEl = $('#wrong-ans');
+
 let questionNo = 0;
 let randomized = []
 let score = 0;
@@ -139,7 +144,13 @@ function showHome() {
     $homeEl.removeClass('d-none');
     $questionEl.addClass('d-none');
     $highscoreEl.addClass('d-none');
+    $newHighscoreEl.addClass('d-none');
     $viewLeaderboardEl.text('View Leaderboard');
+
+    timerCountEl.innerHTML = '120';
+    questionNo = 0;
+    score = 0;
+    win = false;
 }
 
 function showHighscoreInput() {
@@ -147,19 +158,19 @@ function showHighscoreInput() {
     $homeEl.addClass('d-none');
     $questionEl.addClass('d-none');
     $highscoreEl.removeClass('d-none');
-    $highscoreEl.children('h3').text(score);
+    $highscoreEl.children('h3').children().text(score);
+
+    let temp = [...highscores]
+    temp.push([name, score]);
+    temp.sort(function(a, b) { return b[1] - a[1] }).splice(10);
+
+    if(score > temp[9][1]) {
+        $newHighscoreEl.removeClass('d-none');
+    }
 }
 
 function storeHighscores() {
     localStorage.setItem("highscores", JSON.stringify(highscores));
-}
-
-function resetGame() {
-    timerCountEl.innerHTML = '120';
-    questionNo = 0;
-    score = 0;
-    win = false;
-    showHighscoreInput();
 }
 
 function setupLeaderboard() {
@@ -196,7 +207,6 @@ function submitHighscore(event) {
 
     storeHighscores();
     setupLeaderboard();
-    resetGame();
     showHome();
 
     $nameEl.text('');
@@ -219,6 +229,9 @@ function checkAnswer(event) {
 
     }
     else {
+        $wrongAnswerEl.text('Wrong Answer');
+        $wrongAnswerEl.fadeIn('fast');
+        $wrongAnswerEl.fadeOut('slow');
         secondsLeft -= 3;
     }
 }
@@ -245,6 +258,7 @@ function startGame() {
             alert('Times Up!');
             showHighscoreInput();
         }
+
     }, 1000);
 }
 
@@ -264,3 +278,4 @@ window.addEventListener('load', function() {
 });
 
 $highscoreFormEl.on('submit', submitHighscore);
+$homeButtonEl.on('click',showHome);
