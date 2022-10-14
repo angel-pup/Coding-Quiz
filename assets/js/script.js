@@ -14,6 +14,7 @@ let $highscoreEl = $('#highscore');
 let $homeButtonEl = $('#go-home-button');
 let $newHighscoreEl = $('#new-highscore');
 let $wrongAnswerEl = $('#wrong-ans');
+let $clearHighscoreEl = $('#clear-highscores');
 
 let questionNo = 0;
 let randomized = []
@@ -133,6 +134,7 @@ function displayQuestions() {
 
 function showLeaderboard() {
     $leaderboardEl.removeClass('d-none');
+    $clearHighscoreEl.removeClass('d-none');
     $homeEl.addClass('d-none');
     $questionEl.addClass('d-none');
     $highscoreEl.addClass('d-none');
@@ -141,6 +143,7 @@ function showLeaderboard() {
 
 function showHome() {
     $leaderboardEl.addClass('d-none');
+    $clearHighscoreEl.addClass('d-none');
     $homeEl.removeClass('d-none');
     $questionEl.addClass('d-none');
     $highscoreEl.addClass('d-none');
@@ -190,6 +193,12 @@ function init() {
         highscores = storedHighscores;
     }
 
+    setupLeaderboard();
+}
+
+function clearHighscores() {
+    highscores = [];
+    storeHighscores();
     setupLeaderboard();
 }
 
@@ -279,3 +288,4 @@ window.addEventListener('load', function() {
 
 $highscoreFormEl.on('submit', submitHighscore);
 $homeButtonEl.on('click',showHome);
+$clearHighscoreEl.on('click', clearHighscores);
