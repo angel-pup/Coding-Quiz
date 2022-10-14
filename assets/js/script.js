@@ -204,10 +204,11 @@ function clearHighscores() {
 
 function submitHighscore(event) {
     event.preventDefault();
-    let $nameEl = $('input[name="initials-text"]')
-    let name = $nameEl.val();
+    const $nameEl = $('input[name="initials-text"]')
+    const name = $nameEl.val();
+    const reg = /[^A-Za-z]/g;
 
-    if(/^[A-Za-z]*$/.test(name)) {
+    if(reg.test(name)) {
         alert("Please use only letters for initials");
         return;
     }
