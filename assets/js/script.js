@@ -13,6 +13,7 @@ let $highscoreFormEl = $('#highscore-form');
 let $highscoreEl = $('#highscore');
 let $homeButtonEl = $('#go-home-button');
 let $newHighscoreEl = $('#new-highscore');
+let $wrongAnswerEl = $('#wrong-ans');
 
 let questionNo = 0;
 let randomized = []
@@ -228,6 +229,9 @@ function checkAnswer(event) {
 
     }
     else {
+        $wrongAnswerEl.text('Wrong Answer');
+        $wrongAnswerEl.fadeIn('fast');
+        $wrongAnswerEl.fadeOut('slow');
         secondsLeft -= 3;
     }
 }
@@ -254,6 +258,7 @@ function startGame() {
             alert('Times Up!');
             showHighscoreInput();
         }
+
     }, 1000);
 }
 
