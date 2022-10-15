@@ -239,7 +239,6 @@ function checkAnswer(event) {
                 score += secondsLeft; //add less points for when more time is used to finish quiz
             }
             win = true;
-            console.log(win);
             showHighscoreInput();
             } else {
                 score += 4;
