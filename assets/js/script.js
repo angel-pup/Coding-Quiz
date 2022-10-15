@@ -187,6 +187,8 @@ function setupLeaderboard() {
 }
 
 function init() {
+    randomized = shuffleArray(questionBank);
+
     let storedHighscores = JSON.parse(localStorage.getItem("highscores"));
 
     if (storedHighscores !== null) {
@@ -228,27 +230,27 @@ function submitHighscore(event) {
 }
 
 function checkAnswer(event) {
-    if ((questionNo) >= randomized.length) {
-        console.log('secs' + secondsLeft);
-        if (secondsLeft > 80) {
-            score += 80;
-        } else {
-            score += (80 - (80 - secondsLeft)); //add less points for when more time is used to finish quiz
-        }
-        win = true;
-        showHighscoreInput();
-    }
-    else if(event.target.innerHTML === currentQuestion.answer) {
-        score += 4;
-        nextQuestion();
+    if(event.target.innerHTML === currentQuestion.answer) {
 
-    }
-    else {
-        $wrongAnswerEl.text('Wrong Answer');
-        $wrongAnswerEl.fadeIn('fast');
-        $wrongAnswerEl.fadeOut('slow');
-        secondsLeft -= 3;
-    }
+        if ((questionNo) >= randomized.length) {
+            if (secondsLeft > 80) {
+                score += 80;
+            } else {
+                score += secondsLeft; //add less points for when more time is used to finish quiz
+            }
+            win = true;
+            console.log(win);
+            showHighscoreInput();
+            } else {
+                score += 4;
+                nextQuestion();
+            }
+        } else {
+            $wrongAnswerEl.text('Wrong Answer');
+            $wrongAnswerEl.fadeIn('fast');
+            $wrongAnswerEl.fadeOut('slow');
+            secondsLeft -= 3;
+        }
 }
 
 function startGame() {
@@ -288,7 +290,6 @@ $viewLeaderboardEl.hover(function() {
 $viewLeaderboardEl.on('click', toggleLeaderboard);
 
 window.addEventListener('load', function() {
-    randomized = shuffleArray(questionBank);
     init();
 });
 
