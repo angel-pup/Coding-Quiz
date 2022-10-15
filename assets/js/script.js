@@ -163,11 +163,11 @@ function showHighscoreInput() {
     $highscoreEl.removeClass('d-none');
     $highscoreEl.children('h3').children().text(score);
 
-    let temp = [...highscores]
+    let temp = [...highscores];
     temp.push([name, score]);
     temp.sort(function(a, b) { return b[1] - a[1] }).splice(10);
 
-    if(score > temp[9][1]) {
+    if(score >= temp[0][1]) {
         $newHighscoreEl.removeClass('d-none');
     }
 }
