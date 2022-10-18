@@ -210,16 +210,21 @@ function submitHighscore(event) {
     const name = $nameEl.val();
     const reg = /[^A-Za-z]/g;
 
+    if (!name) {
+        return;
+    }
+
+    if (name.length !== 3) {
+        alert("Please enter 3 letters");
+        return;
+    }
+
     if(reg.test(name)) {
         alert("Please use only letters for initials");
         return;
     }
 
-    if (!name) {
-        return;
-    }
-
-    highscores.push([name, score]);
+    highscores.push([name.toUpperCase(), score]);
     highscores.sort(function(a, b) { return b[1] - a[1] }).splice(10);
 
     storeHighscores();
