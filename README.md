@@ -1,8 +1,5 @@
 # Coding-Quiz
 Module 4 Challenge - KU Bootcamp
----
-# Password Generator - Module 3 Challenge
-
 ## Table of Contents
 
 - [Description](#description)
